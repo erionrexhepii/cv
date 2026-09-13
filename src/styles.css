@@ -124,9 +124,12 @@ h3 {
   justify-content: center;
   min-height: 46px;
   padding: 0 18px;
+  border: 0;
   border-radius: 999px;
   background: #1d4ed8;
   color: #fff;
+  cursor: pointer;
+  font: inherit;
   font-weight: 800;
   text-decoration: none;
   transition:
@@ -134,7 +137,8 @@ h3 {
     box-shadow 180ms ease;
 }
 
-.button:hover {
+.button:hover,
+.button:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 14px 28px rgba(29, 78, 216, 0.25);
 }
@@ -142,6 +146,10 @@ h3 {
 .button--secondary {
   background: #e0ecff;
   color: #1e40af;
+}
+
+.button--download {
+  background: #0f172a;
 }
 
 .contact-card {
@@ -279,6 +287,15 @@ li + li {
 @media (max-width: 520px) {
   main {
     width: min(100% - 20px, 1120px);
+  }
+
+  .hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
   }
 
   .hero__content,

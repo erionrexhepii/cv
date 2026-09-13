@@ -1,0 +1,16 @@
+---
+description: React and content conventions for the CV website
+globs: "src/**/*.{js,jsx,css}"
+alwaysApply: false
+---
+
+# React CV Patterns
+
+- Keep `profile` in `src/App.jsx` as the single source of truth for CV data.
+- If CV content changes, ensure the website, PDF export, and Word export still use the same `profile` data.
+- Use functional React components and simple helper functions.
+- Avoid adding routing, state libraries, or backend code unless the user asks for a larger app.
+- Keep styling in `src/styles.css` and preserve responsive behavior for mobile screens.
+- Use accessible HTML: real buttons for actions, useful link text, and semantic sections/articles.
+- Keep export buttons working after edits: PDF should download `.pdf`, Word should download `.docx`.
+- After editing React or CSS, run `npm.cmd run build` and check lints for changed files.

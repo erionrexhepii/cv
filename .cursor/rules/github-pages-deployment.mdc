@@ -1,0 +1,16 @@
+---
+description: Deployment rules for GitHub Pages and Vite
+globs: "{vite.config.js,package.json,package-lock.json,.github/workflows/*.yml}"
+alwaysApply: false
+---
+
+# GitHub Pages Deployment
+
+- This is a Vite React app deployed as a GitHub Pages project site.
+- Keep `base: '/cv/'` in `vite.config.js` for the `erionrexhepii/cv` repository.
+- Do not change the GitHub Actions workflow branch from `main` unless the git default branch changes.
+- Build output should remain `dist`.
+- Use `npm ci` in GitHub Actions and `npm.cmd install` locally on Windows.
+- Validate deployment changes with `npm.cmd run build`.
+- Do not commit generated `dist` files unless the deployment strategy changes.
+- Expected public URL: `https://erionrexhepii.github.io/cv/`.

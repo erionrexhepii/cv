@@ -1,0 +1,16 @@
+---
+description: Core professionalism standards for this CV website
+alwaysApply: true
+---
+
+# Project Professionalism
+
+- Treat this repo as a public professional CV and portfolio site.
+- Keep claims honest, especially around DevOps, infrastructure, and production experience.
+- Do not invent jobs, certifications, production systems, company experience, or tool expertise.
+- Prefer internship-level wording such as "learning", "academic project", "foundations", "exposure", and "seeking".
+- Keep writing clear, confident, and recruiter-friendly.
+- Use concise English and avoid exaggerated marketing language.
+- Preserve personal contact information unless the user explicitly asks to change it.
+- Before deployment changes, remember the GitHub Pages URL is expected to be `https://erionrexhepii.github.io/cv/`.
+- On Windows, prefer `npm.cmd` commands in instructions because PowerShell may block `npm.ps1`.
