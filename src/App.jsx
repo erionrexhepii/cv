@@ -1,10 +1,12 @@
 const profile = {
   name: 'Erion Rexhepi',
-  role: 'Computer Science Student | Aspiring DevOps & Infrastructure Intern',
+  role: 'Final-Year Computer Science Student | DevOps & Infrastructure Internship Candidate',
   location: '10000 Prishtine',
   email: 'erionrexhepi73@gmail.com',
   phone: '048 329 532',
   birthDate: '13 July 2005',
+  status: 'Final-year Computer Science student',
+  target: 'DevOps / Infrastructure Internship',
   links: [
     {
       label: 'LinkedIn',
@@ -12,11 +14,18 @@ const profile = {
     },
   ],
   summary:
-    'Computer Science student at AAB College seeking a DevOps or infrastructure internship. I have built academic Java, web, and MySQL projects and I am now focused on Linux fundamentals, networking concepts, automation, databases, and reliable system operation. I do not yet have production DevOps experience, but I am comfortable learning from real environments, documenting my work, and improving through hands-on practice.',
+    'Final-year Computer Science student at AAB College preparing for a DevOps or infrastructure internship. My academic work has focused on Java applications, MySQL databases, web projects, and structured problem solving. I am building stronger foundations in Linux, networking, automation, deployment workflows, and reliable system operation, and I am looking for my first hands-on experience in a professional infrastructure environment.',
+  focus: [
+    'Infrastructure fundamentals',
+    'Linux and command line practice',
+    'Networking and system troubleshooting',
+    'Build, deployment, and GitHub workflow basics',
+  ],
   skills: [
     'Linux Fundamentals',
     'Command Line Basics',
     'Git & GitHub',
+    'GitHub Actions Basics',
     'Networking Concepts',
     'MySQL',
     'Database Design',
@@ -28,17 +37,22 @@ const profile = {
     'Troubleshooting',
     'Technical Documentation',
   ],
+  strengths: [
+    'Careful learner with strong interest in reliable systems',
+    'Comfortable turning academic requirements into working applications',
+    'Able to document steps, follow structure, and ask for feedback',
+  ],
   languages: ['Albanian', 'English'],
   experience: [
     {
-      role: 'Computer Science Project Work',
+      role: 'Final-Year Computer Science Project Work',
       company: 'AAB College',
       period: '2023 - Present',
       details: [
-        'Built Java and MySQL university projects that required structured data storage, application logic, and debugging.',
-        'Practiced database design, CRUD operations, JDBC connectivity, and clear organization of project files.',
-        'Developed a responsive portfolio website and gained practical experience with Git-based project structure, frontend deployment concepts, and documentation.',
-        'Currently developing stronger foundations in Linux, infrastructure, networking, automation, and DevOps workflows for internship-level work.',
+        'Completed academic Java and MySQL projects involving application logic, persistent storage, validation, and debugging.',
+        'Practiced database design, CRUD operations, JDBC connectivity, and organized project structure across several university assignments.',
+        'Built and deployed a responsive CV website with Git, Vite, GitHub Actions, and GitHub Pages to understand basic build and release flow.',
+        'Currently strengthening Linux, networking, automation, and infrastructure fundamentals for entry-level DevOps work.',
       ],
     },
   ],
@@ -46,7 +60,7 @@ const profile = {
     {
       name: 'Schedule App',
       description:
-        'A Java schedule management application focused on organizing events with persistent database storage and clean application logic.',
+        'A Java schedule management application focused on event organization, persistent database storage, and maintainable application logic.',
       tags: ['Java', 'Database', 'Persistence'],
     },
     {
@@ -64,8 +78,8 @@ const profile = {
     {
       name: 'Personal Portfolio Website',
       description:
-        'A responsive website built with web fundamentals and prepared as a static site, giving me exposure to build and deployment workflows.',
-      tags: ['HTML', 'CSS', 'JavaScript', 'Static Site'],
+        'A responsive CV website built with React and Vite, with downloadable PDF/Word versions and GitHub Pages deployment through a CI workflow.',
+      tags: ['React', 'Vite', 'GitHub Actions', 'GitHub Pages'],
     },
     {
       name: 'Student Management System',
@@ -90,11 +104,6 @@ const profile = {
       degree: 'High School of Social Sciences',
       school: 'Hajdar Dushi, Gjakove',
       period: 'Sep 2020 - Jun 2023',
-    },
-    {
-      degree: 'Elementary School',
-      school: 'Zenel Sadiku, Gjakove',
-      period: 'Sep 2011 - Jun 2020',
     },
   ],
 }
@@ -191,8 +200,14 @@ async function downloadPdf() {
   sectionTitle('Profile')
   paragraph(profile.summary)
 
+  sectionTitle('Internship Focus')
+  profile.focus.forEach(bullet)
+
   sectionTitle('Relevant Skills')
   paragraph(profile.skills.join(' | '), 10)
+
+  sectionTitle('Strengths')
+  profile.strengths.forEach(bullet)
 
   sectionTitle('Project Experience')
   profile.experience.forEach((item) => {
@@ -316,8 +331,14 @@ async function downloadWord() {
           createHeading('Profile'),
           new Paragraph({ children: [textRun(profile.summary)], spacing: { after: 120 } }),
 
+          createHeading('Internship Focus'),
+          ...profile.focus.map(createBullet),
+
           createHeading('Relevant Skills'),
           new Paragraph({ children: [textRun(profile.skills.join(' | '))] }),
+
+          createHeading('Strengths'),
+          ...profile.strengths.map(createBullet),
 
           createHeading('Project Experience'),
           ...profile.experience.flatMap((item) => [
@@ -403,6 +424,14 @@ function App() {
 
         <aside className="contact-card" aria-label="Contact information">
           <div>
+            <span>Status</span>
+            <strong>{profile.status}</strong>
+          </div>
+          <div>
+            <span>Target</span>
+            <strong>{profile.target}</strong>
+          </div>
+          <div>
             <span>Location</span>
             <strong>{profile.location}</strong>
           </div>
@@ -469,12 +498,28 @@ function App() {
         </div>
 
         <aside className="side-column">
+          <Section eyebrow="Direction" title="Internship Focus">
+            <div className="focus-list">
+              {profile.focus.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </Section>
+
           <Section eyebrow="Toolkit" title="Skills">
             <div className="skill-list">
               {profile.skills.map((skill) => (
                 <span key={skill}>{skill}</span>
               ))}
             </div>
+          </Section>
+
+          <Section eyebrow="Work Style" title="Strengths">
+            <ul className="compact-list">
+              {profile.strengths.map((strength) => (
+                <li key={strength}>{strength}</li>
+              ))}
+            </ul>
           </Section>
 
           <Section eyebrow="Communication" title="Languages">
