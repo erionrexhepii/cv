@@ -99,6 +99,7 @@ const profile = {
       degree: 'Faculty of Computer Science',
       school: 'AAB College, Prishtine',
       period: 'Oct 2023 - Present',
+      gpa: '8.3',
     },
     {
       degree: 'High School of Social Sciences',
@@ -247,7 +248,10 @@ async function downloadPdf() {
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(9.5)
     doc.setTextColor(82, 98, 122)
-    doc.text(`${item.school} | ${item.period}`, margin, y)
+    const educationMeta = [item.school, item.period, item.gpa && `GPA ${item.gpa}`]
+      .filter(Boolean)
+      .join(' | ')
+    doc.text(educationMeta, margin, y)
     y += 18
   })
 
@@ -370,7 +374,10 @@ async function downloadWord() {
               new Paragraph({
                 children: [
                   textRun(`${item.degree} - ${item.school}`, { bold: true }),
-                  textRun(` (${item.period})`, { color: '64748B' }),
+                  textRun(
+                    ` (${[item.period, item.gpa && `GPA ${item.gpa}`].filter(Boolean).join(' | ')})`,
+                    { color: '64748B' },
+                  ),
                 ],
                 spacing: { after: 90 },
               }),
@@ -536,6 +543,7 @@ function App() {
                 <h3>{item.degree}</h3>
                 <p>{item.school}</p>
                 <span>{item.period}</span>
+                {item.gpa && <span>GPA {item.gpa}</span>}
               </article>
             ))}
           </Section>
